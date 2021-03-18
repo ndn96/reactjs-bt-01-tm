@@ -1,5 +1,14 @@
 import React from 'react'
 export default function HeaderContainer(props) {
+  const { products } = props;
+  let totalQuantity
+  if (products.length > 0) {
+    totalQuantity = products.map(v => v.quantity).reduce((sum, num) => {
+      return Number(sum) + Number(num)
+    });
+  } else {
+    totalQuantity = 0
+  }
   return (
     <>
       <header className="container">
@@ -8,7 +17,7 @@ export default function HeaderContainer(props) {
           <li>Home</li>
           <li>Shopping Cart</li>
         </ul>
-        <span className="count">3 items in the bag</span>
+        <span className="count">{totalQuantity} items in the bag</span>
       </header>
     </>)
 }

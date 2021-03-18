@@ -198,8 +198,7 @@ header .count {
 
 .close {
   fill: #7d7d7d;
-  transition: color 150ms linear, background-color 150ms linear,
-    fill 150ms linear, 150ms opacity linear;
+  transition: color 150ms linear, background-color 150ms linear, fill 150ms linear, 150ms opacity linear;
   cursor: pointer;
 }
 
@@ -352,4 +351,9 @@ header .count {
   html {
     font-size: 16px;
   }
+}
+.coupon_warning {
+  font-weight: bold;
+  color: red;
+  font-style: italic;
 }

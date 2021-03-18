@@ -1,4 +1,4 @@
-# Exercise 01 - ReactJS - Techmaster
+# Exercise 02 + 03 - ReactJS - Techmaster
 
 Convert UI Shopping Cart from HTML/CSS into ReactJs Template.
 
