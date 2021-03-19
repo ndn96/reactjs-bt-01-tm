@@ -1,6 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import Modal from './Modal'
 export default function BodyContainer(props) {
   const { setItem, products, setProducts, setTotalPrice } = props;
+  // 1. Hiển thị Modal Box:
+  const [modal, setModal] = useState(false);
+  // 2. Get Id của Product Item:
+  const [itemId, setItemId] = useState();
 
   useEffect(() => {
     setItem(() => {
@@ -19,18 +24,21 @@ export default function BodyContainer(props) {
       if (products.length > 0) {
         _totalPrice = products.map(v => Number(v.price) * Number(v.quantity)).reduce((sum, num) => sum + num)
       }
-      // console.log('totalPrice: ', _totalPrice)
       return _totalPrice
     })
-  }, [products,setItem,setTotalPrice]);
+  }, [products, setItem, setTotalPrice]);
 
   // Xóa Cart Item
-  const removeItem = (ev) => {
-    ev.preventDefault();
+  const removeItem = async (ev) => {
+    // ev.preventDefault();
     // 1. Get id của phần tử cần remove.
-    const _id = ev.target.getAttribute('data-id');
-    const newProducts = products.filter(v => v.id !== _id)
-    setProducts(newProducts);
+    const _id = await ev.target.getAttribute('data-id');
+    // const newProducts = products.filter(v => v.id !== _id)
+    // 1. Hiện hộp thoại thông báo lên.
+    await setModal(true);
+    // 3. Cập nhật id cho
+    await setItemId(_id)
+    // console.log('_id: ', _id)
   }
   // Thay đổi số lượng khi người dùng thay đổi input quantity
   const handleChangeQuantity = async (ev) => {
@@ -52,6 +60,7 @@ export default function BodyContainer(props) {
   return (
     <>
       <section className="container">
+        {(modal) && (<Modal itemId={itemId} modal={modal} setModal={setModal} products={products} setProducts={setProducts} />)}
         <ul className="products">
           {products.map(v => {
             return (
@@ -67,7 +76,7 @@ export default function BodyContainer(props) {
                     <div className="description">
                       {v.description}
                     </div>
-                    <div className="price">${v.price}</div>
+                    <div className="price">{(v.price > 0) ? (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'VND' }).format((v.price) * 25000)) : (0)}</div>
                   </div>
                 </div>
                 <div className="col right">

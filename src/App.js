@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <HeaderContainer products={products} />
       <BodyContainer setItem={setItem} item={item} products={products} setProducts={setProducts} setTotalPrice={setTotalPrice} />
-      <FooterContainer totalPrice={totalPrice} tax={tax} percent={percent} setPercent={setPercent} coupon={COUPON} />
+      <FooterContainer totalPrice={totalPrice} tax={tax} percent={percent} setPercent={setPercent} coupon={COUPON} products={products} setProducts={setProducts}/>
     </div>
   );
 }

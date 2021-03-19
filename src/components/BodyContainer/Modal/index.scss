@@ -1,0 +1,46 @@
+div#cookiesPopup {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  background-color: #e3e7e9db;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+.cookiesContent {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding: 30px 30px 70px;
+  button.close {
+    width: 30px;
+    font-size: 20px;
+    color: #c0c5cb;
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 10px;
+  }
+  img {
+    width: 82px;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+  button.accept {
+    background-color: #ed6755;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    padding: 14px;
+    font-size: 16px;
+    color: white;
+    box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  }
+}
